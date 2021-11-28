@@ -2,7 +2,14 @@
 
 _This project was generated with [create-empirica-app](https://github.com/empiricaly/create-empirica-app)._
 
-*Add a description of your Empirica app*
+# Answers to Take Home Assignment Questions
+
+a) This task took me about 11 hours to implement. I spent about 3 hours setting up/figuring out the basics of how empirica works, and the rest implementing this task. 
+
+b) My biggest challenge implementing this task was figuring out how to make the actual drawing of the lines work and interact with the 9 dots. I decided I would approach this task by taking advantage of the canvas element and using that to draw the lines as well as the dots. This was challenging because it was different from how I would normally use React components which is making a component for each part of the game (for example, at first I considered making a dot component for rendering the dots and somehow figuring out how I would be able to allow users to draw on top of the dots). The reason I ended up mainly using the canvas element to display the dots and lines was because it allowed me to track mouse interactions with the canvas and draw on top of dots easily. The tradeoff then was me having to manually do a lot of the re-rendering React usually helps me do; I took advantage of the componentDidUpdate lifecycle method to do this and manually checked whether or not it was appropriate to update what was being displayed.
+
+c) A key design decision I made was creating a component (NineDotsCanvas) just for rendering the canvas (the dots and the lines the user has inputted). The only information that needs to be associated with a user are the points (xy coordinates) the user has selected on the canvas. Similarily, the only information neccecary to draw out a user's current canvas are the list of points the user has selected. So by making a canvas component that can display the canvas based on just the list of points I am able to re-use this in the SocialExposure component to display the other user's canvases as well as the current user's canvas. Note that I made it optional to pass in some functions as props for the canvas component to deal with mouse clicks and movements that I use to track the current user's movements on the canvas, but for displaying other user's canvases, these functions are not provided since they are not needed.
+
 
 # Running this App Locally
 
